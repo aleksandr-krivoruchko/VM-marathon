@@ -1,19 +1,25 @@
-const cards = document.querySelectorAll('.slide');
-const container = document.querySelector('.container');
 
-container.addEventListener('click', onShowSlide);
+function sliderPlugin(activeSlide = 2) {
+		const slides = document.querySelectorAll('.slide');
+		const container = document.querySelector('.container');
+
+		container.addEventListener('click', onShowSlide);
+
+		slides[activeSlide].classList.add('active');
+
+		function onShowSlide(e) {
+
+		removeClassActive();
+		e.target.classList.add("active")
+		}
 
 
-function onShowSlide(e) {
+		function removeClassActive() {
 
-removeClassActive();
-e.target.classList.add("active")
+			slides.forEach((slide) => {
+		slide.classList.remove("active");
+		})
+		}
 }
 
-
-function removeClassActive() {
-
-	cards.forEach((slide) => {
-slide.classList.remove("active");
-})
-}
+sliderPlugin(1);
